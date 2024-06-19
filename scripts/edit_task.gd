@@ -30,12 +30,14 @@ func on_task_edit(edit_task_data, edit_task_script):
 	title_input.text = task_data.title
 	update_ui_time()
 	check_valid_time()
+	confirm_button.text = tr("Editar")
 	visible = true
 	
 func _on_new_task_button_pressed():
 	is_task_new = true
 	task_data =  Task.new("","", 0)
 	check_valid_time()
+	confirm_button.text = tr("Crear")
 	visible = true
 		
 func minutes_to_seconds(str_minutes:String):
@@ -92,14 +94,17 @@ func clear_ui_and_exit():
 	task_data = null
 	task_script = null
 	
+func set_text_on_data():
+	task_data.icon = icon_input.text
+	task_data.title = title_input.text
 
 func _on_back_button_pressed():
 	clear_ui_and_exit()
 	
 func _on_confirm_button_pressed():
+	set_text_on_data()
+	
 	if (is_task_new):
-		task_data.icon = icon_input.text
-		task_data.title = title_input.text
 		var task_instance = TASK_SLOT.instantiate()
 		#task_instance.set_task(new_task_data)
 		
