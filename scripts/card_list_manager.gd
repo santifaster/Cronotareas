@@ -101,3 +101,8 @@ func _on_reset_task(card_node:Node):
 	if(task_index >= 0):
 		timer_controller._stop_timer()
 		timer_controller.reset_timer_task_values()
+
+
+func _on_edit_task(card_node):
+	if(current_task_container.cards.find(card_node) >= 0):
+		timer_controller.reset_timer_task_values()

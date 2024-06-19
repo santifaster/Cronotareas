@@ -199,4 +199,5 @@ layout_mode = 1
 [connection signal="on_first_card_stored" from="CronoTareas/MarginContainer/VBoxContainer/Task Manager/VBoxContainer/FinishedTaskContainer" to="CronoTareas/MarginContainer/VBoxContainer/Task Manager/VBoxContainer" method="_on_finished_container_first_card_stored"]
 [connection signal="add_task" from="Edit task menu" to="CronoTareas/MarginContainer/VBoxContainer/Task Manager" method="_add_card"]
 [connection signal="add_task" from="Edit task menu" to="CronoTareas/MarginContainer/VBoxContainer/Task Manager/VBoxContainer/TaskContainer" method="_add_card"]
+[connection signal="on_edit_task" from="Edit task menu" to="CronoTareas/MarginContainer/VBoxContainer/Task Manager" method="_on_edit_task"]
 [connection signal="change_theme" from="Main menu" to="." method="_on_change_theme"]

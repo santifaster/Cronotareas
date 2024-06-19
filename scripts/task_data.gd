@@ -7,6 +7,8 @@ var icon : String
 var duration : float
 var time_left : float
 
+enum state_type {not_started, in_progress, paused, completed}
+var state = state_type.not_started
 #region Get Set Minutes and Seconds
 
 var duration_minutes :
@@ -34,11 +36,9 @@ var time_left_seconds :
 	set(value):
 		value = clamp(value, 0, 60)
 		time_left += value - time_left_seconds
+
 #endregion
 
-
-enum state_type {not_started, in_progress, paused, completed}
-var state = state_type.not_started
 	
 func _init(n_icon, n_title, n_duration):	
 	title = n_title

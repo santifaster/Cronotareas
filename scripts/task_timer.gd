@@ -47,6 +47,7 @@ func update_task(completed = false):
 	task_finished.emit()
 
 func _on_timer_button_pressed():
+	
 	if (current_task == null):
 		return
 	

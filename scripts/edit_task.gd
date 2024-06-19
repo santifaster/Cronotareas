@@ -1,6 +1,7 @@
 extends Control
 
 signal add_task(task)
+signal on_edit_task(task)
 
 const TASK_SLOT = preload("res://scenes/task_slot.tscn")
 @onready var main_menu = %"Main menu"
@@ -17,19 +18,19 @@ const TASK_SLOT = preload("res://scenes/task_slot.tscn")
 @onready var confirm_button = $"HBoxContainer/Confirm Button"
 
 var is_task_new
-var task_script
+var task_slot_script
 var task_data
 #Check if icon_input has only 1 char
 
-func on_task_edit(edit_task_data, edit_task_script):
+func on_task_edit(edit_task_data, edit_task_slot_script):
 	is_task_new = false
 	#Update displayed data
-	task_script = edit_task_script
+	task_slot_script = edit_task_slot_script
 	task_data = edit_task_data
 	icon_input.text = task_data.icon
 	title_input.text = task_data.title
 	update_ui_time()
-	check_valid_time()
+	#check_valid_time()
 	confirm_button.text = tr("Editar")
 	visible = true
 	
@@ -47,15 +48,14 @@ func minutes_to_seconds(str_minutes:String):
 func time_input_wrong(new_text:String, current_time:float,
 current_time_processed:float, line_edit:LineEdit):
 	
-	if(not new_text.is_valid_int() || int(new_text) <= 0):
-		if new_text != "" or new_text != "0":
-			return true
-		
+	if not new_text.is_valid_int() and new_text != "":
+			
 		if current_time <= 0:
 			line_edit.clear()
 		else: 
 			line_edit.text = str(current_time_processed)
 		return true
+		
 	return false
 	
 func add_duration_time_left(current_duration):
@@ -82,17 +82,17 @@ func check_valid_time():
 		confirm_button.disabled = false
 
 func clear_ui_and_exit():
-	
 	visible = false
+	
+	task_data = null
+	task_slot_script = null
+	
 	icon_input.clear()
 	title_input.clear()
 	minutes_duration_line_edit.clear()
 	seconds_duration_line_edit.clear()
 	minutes_left_line_edit.clear()
 	seconds_left_line_edit.clear()
-	
-	task_data = null
-	task_script = null
 	
 func set_text_on_data():
 	task_data.icon = icon_input.text
@@ -103,20 +103,26 @@ func _on_back_button_pressed():
 	
 func _on_confirm_button_pressed():
 	set_text_on_data()
-	
 	if (is_task_new):
 		var task_instance = TASK_SLOT.instantiate()
 		#task_instance.set_task(new_task_data)
 		
 		task_instance.on_edit.connect(on_task_edit)
 		main_menu.delete_all_tasks.connect(task_instance.delete)
-		
 		task_instance.task_data = task_data
 		add_task.emit(task_instance)
 		task_instance.update_task_ui()
 
 	else:
-		task_script.set_task(task_data)
+		if task_data.time_left != 0 and task_data.state == task_data.state_type.completed:
+			if task_data.duration == task_data.time_left:
+				task_data.state == task_data.state_type.not_started
+			else:
+				task_data.state == task_data.state_type.paused
+				
+		task_slot_script.set_task(task_data)
+		on_edit_task.emit(task_slot_script)
+	print(str(task_data.duration) + " " + str(task_data.time_left))
 		
 	clear_ui_and_exit()
 		
@@ -129,7 +135,9 @@ func _on_confirm_button_pressed():
 #region On time submited
 
 func _on_minutes_duration_changed(new_text):
-
+	if(task_data == null):
+		return
+	
 	if(time_input_wrong(new_text, task_data.duration,
 	task_data.duration_minutes,minutes_duration_line_edit)):
 		return
@@ -143,6 +151,8 @@ func _on_minutes_duration_changed(new_text):
 
 
 func _on_seconds_duration_changed(new_text):
+	if(task_data == null):
+		return
 
 	if(time_input_wrong(new_text, task_data.duration,
 	task_data.duration_seconds ,seconds_duration_line_edit)):
@@ -152,31 +162,34 @@ func _on_seconds_duration_changed(new_text):
 
 	task_data.duration = new_seconds + task_data.duration_minutes * 60
 	add_duration_time_left(task_data.duration)	
-	print(str(task_data.duration) + "/" + str(task_data.time_left))
 	check_valid_time()
 	
 	
 func _on_minutes_left_changed(new_text):
-
+	if(task_data == null):
+		return
+		
 	if(time_input_wrong(new_text, task_data.time_left,
 	task_data.time_left_minutes,minutes_duration_line_edit)):
 		return
 		
 	var new_minutes = clamp(minutes_to_seconds(new_text),0,99*60)
 	
-	task_data.time_left = clamp(new_minutes + task_data.time_left_seconds, 1, task_data.duration)
+	task_data.time_left = clamp(new_minutes + task_data.time_left_seconds, 0, task_data.duration)
 	
 	check_valid_time()
 
 func _on_seconds_left_changed(new_text):
-	
+	if(task_data == null):
+		return
+			
 	if(time_input_wrong(new_text, task_data.time_left,
 	task_data.time_left_seconds,seconds_duration_line_edit)):
 		return
 		
 	var new_seconds = clamp(int(new_text), 0, 60)	
 
-	task_data.time_left = clamp(new_seconds + task_data.time_left_minutes * 60, 1, task_data.duration)	
+	task_data.time_left = clamp(new_seconds + task_data.time_left_minutes * 60, 0, task_data.duration)	
 	
 	check_valid_time()
 
