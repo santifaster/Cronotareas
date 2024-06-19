@@ -1,0 +1,50 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Cronotareas"
+config/version="0.1"
+run/main_scene="res://scenes/interface.tscn"
+config/features=PackedStringArray("4.2", "Mobile")
+config/icon="res://sprites/logo_cronotareas.png"
+
+[display]
+
+window/size/viewport_width=384
+window/size/viewport_height=768
+window/size/initial_position_type=2
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=1
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://scenes/": "teal",
+"res://scripts/": "blue",
+"res://sprites/": "orange",
+"res://themes/": "purple"
+}
+
+[internationalization]
+
+locale/translation_remaps={}
+locale/translations=PackedStringArray("res://translation_cronotareas.es_ES.translation", "res://translation_cronotareas.en.translation")
+locale/locale_filter_mode=1
+
+[rendering]
+
+renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

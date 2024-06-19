@@ -1,0 +1,49 @@
+[gd_resource type="Theme" load_steps=16 format=3 uid="uid://bavs60yurv0gx"]
+
+[ext_resource type="StyleBox" uid="uid://d3ctfhrafrrhd" path="res://themes/sunset_theme/button/button_disabled_style_sunset.tres" id="1_hbccw"]
+[ext_resource type="StyleBox" uid="uid://c0aikkm4kmryu" path="res://themes/sunset_theme/button/button_focus_style_sunset.tres" id="1_nl5px"]
+[ext_resource type="StyleBox" uid="uid://drq8j88no50pw" path="res://themes/sunset_theme/button/button_style_sunset.tres" id="1_waqv8"]
+[ext_resource type="StyleBox" uid="uid://dd0yuyb8y2cvo" path="res://themes/sunset_theme/button/button_hover_style_sunset.tres" id="2_2dtre"]
+[ext_resource type="StyleBox" uid="uid://dadtujp53ealo" path="res://themes/sunset_theme/button/button_pressed_style_sunset.tres" id="4_hg60b"]
+[ext_resource type="StyleBox" uid="uid://ci6ii5kxl4vv8" path="res://themes/sunset_theme/panel/panel_card_style_sunset.tres" id="5_xiedt"]
+[ext_resource type="StyleBox" uid="uid://dnw0osdvl8uut" path="res://themes/sunset_theme/round_separator_style_sunset.tres" id="6_xv6qs"]
+[ext_resource type="StyleBox" uid="uid://byqo6nhp2vd72" path="res://themes/sunset_theme/panel/panel_style_sunset.tres" id="7_t2mlw"]
+[ext_resource type="StyleBox" uid="uid://depq6n33dkll" path="res://themes/sunset_theme/text_edit_style_sunset.tres" id="8_ltpxe"]
+[ext_resource type="StyleBox" uid="uid://t5v5oc16lmij" path="res://themes/sunset_theme/bar_background_style_sunset.tres" id="10_a0bgt"]
+[ext_resource type="StyleBox" uid="uid://bc1nvgmcov02b" path="res://themes/sunset_theme/button/round_button_focus_style_sunset.tres" id="10_ex76q"]
+[ext_resource type="StyleBox" uid="uid://dar14bkyg1b3j" path="res://themes/sunset_theme/button/round_button_hover_style_sunset.tres" id="11_5y0ey"]
+[ext_resource type="StyleBox" uid="uid://kg7l647fdbkx" path="res://themes/sunset_theme/bar_style_sunset.tres" id="11_br0wn"]
+[ext_resource type="StyleBox" uid="uid://cmuftgbh6vbhu" path="res://themes/sunset_theme/button/round_button_style_sunset.tres" id="12_epytg"]
+[ext_resource type="StyleBox" uid="uid://w8wqcmxyq6ub" path="res://themes/sunset_theme/button/round_button_pressed_style_sunset.tres" id="13_y6lxh"]
+
+[resource]
+Button/styles/disabled = ExtResource("1_hbccw")
+Button/styles/focus = ExtResource("1_nl5px")
+Button/styles/hover = ExtResource("2_2dtre")
+Button/styles/normal = ExtResource("1_waqv8")
+Button/styles/pressed = ExtResource("4_hg60b")
+CardPanel/base_type = &"Panel"
+CardPanel/styles/panel = ExtResource("5_xiedt")
+HSeparator/styles/separator = ExtResource("6_xv6qs")
+LineEdit/constants/minimum_character_width = 1
+LineEdit/styles/focus = ExtResource("1_nl5px")
+LineEdit/styles/normal = ExtResource("8_ltpxe")
+MainMenuButton/base_type = &"Button"
+MainMenuButton/font_sizes/font_size = 24
+MarginContainer/constants/margin_bottom = 16
+MarginContainer/constants/margin_left = 16
+MarginContainer/constants/margin_right = 16
+MarginContainer/constants/margin_top = 16
+Panel/styles/panel = ExtResource("7_t2mlw")
+ProgressBar/styles/background = ExtResource("10_a0bgt")
+ProgressBar/styles/fill = ExtResource("11_br0wn")
+RoundedButton/base_type = &"Button"
+RoundedButton/styles/focus = ExtResource("10_ex76q")
+RoundedButton/styles/hover = ExtResource("11_5y0ey")
+RoundedButton/styles/normal = ExtResource("12_epytg")
+RoundedButton/styles/pressed = ExtResource("13_y6lxh")
+TextEdit/styles/focus = ExtResource("1_nl5px")
+TextEdit/styles/normal = ExtResource("8_ltpxe")
+TextureProgressBar/colors/tint_over = Color(1, 1, 1, 1)
+TextureProgressBar/colors/tint_progress = Color(0.901961, 0.317647, 0.270588, 1)
+TextureProgressBar/colors/tint_under = Color(0.639216, 0.231373, 0.419608, 1)

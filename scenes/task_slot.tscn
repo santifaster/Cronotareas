@@ -1,0 +1,147 @@
+[gd_scene load_steps=5 format=3 uid="uid://kugdlmyqbn0x"]
+
+[ext_resource type="Script" path="res://scripts/task_slot.gd" id="1_vd7ur"]
+[ext_resource type="Texture2D" uid="uid://6hd5oaf80yjb" path="res://sprites/drop.png" id="2_0bur8"]
+[ext_resource type="StyleBox" uid="uid://doa74dksxle6u" path="res://themes/default_theme/panel/empty_slot_style.tres" id="3_4iqsi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fp8k5"]
+font_size = 32
+
+[node name="Task Slot" type="CenterContainer"]
+offset_right = 320.0
+offset_bottom = 107.0
+script = ExtResource("1_vd7ur")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(320, 64)
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Panel background" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.16
+focus_neighbor_bottom = NodePath("../VBoxContainer/TextHBoxContainer/Dropdown Button")
+focus_mode = 2
+theme_type_variation = &"CardPanel"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TimeHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Task Duration Label" type="Label" parent="MarginContainer/VBoxContainer/TimeHBoxContainer"]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+text = "02:00"
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/TimeHBoxContainer"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+fill_mode = 1
+show_percentage = false
+
+[node name="Time Left Label" type="Label" parent="MarginContainer/VBoxContainer/TimeHBoxContainer"]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+text = "02:00"
+horizontal_alignment = 1
+
+[node name="TextHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+
+[node name="Icon Label" type="Label" parent="MarginContainer/VBoxContainer/TextHBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+text = "🎂"
+label_settings = SubResource("LabelSettings_fp8k5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title Label" type="Label" parent="MarginContainer/VBoxContainer/TextHBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Tarea pendiente, el texto lleva autowrap"
+vertical_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 3
+
+[node name="Dropdown Button" type="Button" parent="MarginContainer/VBoxContainer/TextHBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../ButtonDropHContainer/Start Button")
+focus_neighbor_top = NodePath("../../../Panel background")
+focus_neighbor_right = NodePath("../../ButtonDropHContainer/Eliminate Button")
+focus_neighbor_bottom = NodePath("../../ButtonDropHContainer/Start Button")
+focus_next = NodePath("../../ButtonDropHContainer/Start Button")
+focus_previous = NodePath("../../../Panel background")
+mouse_filter = 1
+action_mode = 0
+icon = ExtResource("2_0bur8")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="ButtonDropHContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="Start Button" type="Button" parent="MarginContainer/VBoxContainer/ButtonDropHContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../../TextHBoxContainer/Dropdown Button")
+focus_neighbor_right = NodePath("../Edit Button")
+focus_next = NodePath("../Edit Button")
+focus_previous = NodePath("../../TextHBoxContainer/Dropdown Button")
+text = "Comenzar"
+language = "es_ES"
+
+[node name="Edit Button" type="Button" parent="MarginContainer/VBoxContainer/ButtonDropHContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Start Button")
+focus_neighbor_top = NodePath("../../TextHBoxContainer/Dropdown Button")
+focus_neighbor_right = NodePath("../Reset Button")
+focus_next = NodePath("../Reset Button")
+focus_previous = NodePath("../Start Button")
+text = "Editar"
+language = "es_ES"
+
+[node name="Reset Button" type="Button" parent="MarginContainer/VBoxContainer/ButtonDropHContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Edit Button")
+focus_neighbor_top = NodePath("../../TextHBoxContainer/Dropdown Button")
+focus_neighbor_right = NodePath("../Eliminate Button")
+focus_next = NodePath("../Eliminate Button")
+focus_previous = NodePath("../Edit Button")
+text = "Reiniciar"
+language = "es_ES"
+
+[node name="Eliminate Button" type="Button" parent="MarginContainer/VBoxContainer/ButtonDropHContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Reset Button")
+focus_neighbor_top = NodePath("../../TextHBoxContainer/Dropdown Button")
+focus_previous = NodePath("../Reset Button")
+text = "Eliminar"
+language = "es_ES"
+
+[node name="Hide Panel" type="Panel" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("3_4iqsi")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/TextHBoxContainer/Dropdown Button" to="." method="_on_dropdown_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonDropHContainer/Start Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonDropHContainer/Edit Button" to="." method="_on_edit_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonDropHContainer/Reset Button" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonDropHContainer/Eliminate Button" to="." method="_on_eliminate_button_pressed"]

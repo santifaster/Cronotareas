@@ -1,0 +1,202 @@
+[gd_scene load_steps=14 format=3 uid="uid://dx765c6u3c0vv"]
+
+[ext_resource type="Theme" uid="uid://d2wkkamjlb0s0" path="res://themes/default_theme/default_theme.tres" id="1_r0d25"]
+[ext_resource type="Texture2D" uid="uid://co3gn0s4f2cvt" path="res://sprites/white_circle.svg" id="1_v3rhs"]
+[ext_resource type="Script" path="res://scripts/theme_manager.gd" id="2_3toks"]
+[ext_resource type="Theme" uid="uid://bavs60yurv0gx" path="res://themes/sunset_theme/sunset_theme.tres" id="3_mqxht"]
+[ext_resource type="Script" path="res://scripts/task_timer.gd" id="4_l8mco"]
+[ext_resource type="Texture2D" uid="uid://xu0apx1tb2xd" path="res://sprites/play.png" id="5_njxej"]
+[ext_resource type="PackedScene" uid="uid://cfd12mpey6vet" path="res://scenes/edit_task_menu.tscn" id="6_uh4bl"]
+[ext_resource type="Script" path="res://scripts/card_list.gd" id="7_4mnvg"]
+[ext_resource type="Texture2D" uid="uid://8llau0u21osy" path="res://sprites/add.png" id="7_7xkdy"]
+[ext_resource type="Script" path="res://scripts/card_list_manager.gd" id="7_brxg4"]
+[ext_resource type="Texture2D" uid="uid://cwo84tic1fds4" path="res://sprites/menu.png" id="7_k6myb"]
+[ext_resource type="Script" path="res://scripts/hide_card_list.gd" id="9_leg3y"]
+[ext_resource type="PackedScene" uid="uid://cc7br6a5feqjy" path="res://scenes/main_menu.tscn" id="11_dt8km"]
+
+[node name="Interface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_r0d25")
+script = ExtResource("2_3toks")
+themes = Array[Theme]([ExtResource("1_r0d25"), ExtResource("3_mqxht")])
+
+[node name="CronoTareas" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CronoTareas"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CronoTareas"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CronoTareas/MarginContainer"]
+layout_mode = 2
+
+[node name="TopButtonsMargin" type="MarginContainer" parent="CronoTareas/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = -24
+
+[node name="HSplitContainer" type="HSplitContainer" parent="CronoTareas/MarginContainer/VBoxContainer/TopButtonsMargin"]
+layout_mode = 2
+size_flags_vertical = 0
+split_offset = 248
+dragger_visibility = 2
+
+[node name="New Task Button" type="Button" parent="CronoTareas/MarginContainer/VBoxContainer/TopButtonsMargin/HSplitContainer"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_type_variation = &"RoundedButton"
+icon = ExtResource("7_7xkdy")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Menu Button" type="Button" parent="CronoTareas/MarginContainer/VBoxContainer/TopButtonsMargin/HSplitContainer"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_type_variation = &"RoundedButton"
+icon = ExtResource("7_k6myb")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Timer Menu" type="VBoxContainer" parent="CronoTareas/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("4_l8mco")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CronoTareas/MarginContainer/VBoxContainer/Timer Menu"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TimerBar" type="TextureProgressBar" parent="CronoTareas/MarginContainer/VBoxContainer/Timer Menu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+mouse_filter = 2
+max_value = 60.0
+step = 0.0
+value = 45.0
+fill_mode = 5
+texture_under = ExtResource("1_v3rhs")
+texture_progress = ExtResource("1_v3rhs")
+tint_under = Color(0.266667, 0.266667, 0.266667, 1)
+tint_progress = Color(0.678431, 0.403922, 1, 1)
+
+[node name="Timer" type="Timer" parent="CronoTareas/MarginContainer/VBoxContainer/Timer Menu/VBoxContainer/TimerBar"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Timer Button" type="Button" parent="CronoTareas/MarginContainer/VBoxContainer/Timer Menu/VBoxContainer/TimerBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -72.0
+offset_right = 72.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"RoundedButton"
+theme_override_constants/icon_max_width = 64
+icon = ExtResource("5_njxej")
+icon_alignment = 1
+
+[node name="CurrentTaskContainer" type="CenterContainer" parent="CronoTareas/MarginContainer/VBoxContainer/Timer Menu/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("7_4mnvg")
+
+[node name="Tasks HSeparator" type="HSeparator" parent="CronoTareas/MarginContainer/VBoxContainer/Timer Menu/VBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Task Manager" type="ScrollContainer" parent="CronoTareas/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+script = ExtResource("7_brxg4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CronoTareas/MarginContainer/VBoxContainer/Task Manager"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("9_leg3y")
+
+[node name="Pending Tasks Label" type="Label" parent="CronoTareas/MarginContainer/VBoxContainer/Task Manager/VBoxContainer"]
+layout_mode = 2
+text = "Tareas Pendientes"
+language = "es_ES"
+
+[node name="TaskContainer" type="VBoxContainer" parent="CronoTareas/MarginContainer/VBoxContainer/Task Manager/VBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_vertical = 0
+script = ExtResource("7_4mnvg")
+
+[node name="Completed Label" type="Label" parent="CronoTareas/MarginContainer/VBoxContainer/Task Manager/VBoxContainer"]
+layout_mode = 2
+text = "Tareas Completadas
+"
+language = "es_ES"
+
+[node name="FinishedTaskContainer" type="VBoxContainer" parent="CronoTareas/MarginContainer/VBoxContainer/Task Manager/VBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_vertical = 0
+script = ExtResource("7_4mnvg")
+
+[node name="Edit task menu" parent="." instance=ExtResource("6_uh4bl")]
+visible = false
+layout_mode = 1
+
+[node name="Main menu" parent="." instance=ExtResource("11_dt8km")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[connection signal="pressed" from="CronoTareas/MarginContainer/VBoxContainer/TopButtonsMargin/HSplitContainer/New Task Button" to="Edit task menu" method="_on_new_task_button_pressed"]
+[connection signal="pressed" from="CronoTareas/MarginContainer/VBoxContainer/TopButtonsMargin/HSplitContainer/Menu Button" to="Main menu" method="_on_menu_button_pressed"]
+[connection signal="task_finished" from="CronoTareas/MarginContainer/VBoxContainer/Timer Menu" to="CronoTareas/MarginContainer/VBoxContainer/Task Manager" method="_on_completed_card"]
+[connection signal="timeout" from="CronoTareas/MarginContainer/VBoxContainer/Timer Menu/VBoxContainer/TimerBar/Timer" to="CronoTareas/MarginContainer/VBoxContainer/Timer Menu" method="_on_timer_timeout"]
+[connection signal="pressed" from="CronoTareas/MarginContainer/VBoxContainer/Timer Menu/VBoxContainer/TimerBar/Timer Button" to="CronoTareas/MarginContainer/VBoxContainer/Timer Menu" method="_on_timer_button_pressed"]
+[connection signal="on_emptied_list" from="CronoTareas/MarginContainer/VBoxContainer/Timer Menu/VBoxContainer/CurrentTaskContainer" to="CronoTareas/MarginContainer/VBoxContainer/Task Manager" method="_on_current_task_container_emptied"]
+[connection signal="mouse_entered" from="CronoTareas/MarginContainer/VBoxContainer/Task Manager/VBoxContainer/TaskContainer" to="CronoTareas/MarginContainer/VBoxContainer/Task Manager/VBoxContainer/TaskContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CronoTareas/MarginContainer/VBoxContainer/Task Manager/VBoxContainer/TaskContainer" to="CronoTareas/MarginContainer/VBoxContainer/Task Manager/VBoxContainer/TaskContainer" method="_on_mouse_exited"]
+[connection signal="on_first_card_stored" from="CronoTareas/MarginContainer/VBoxContainer/Task Manager/VBoxContainer/TaskContainer" to="CronoTareas/MarginContainer/VBoxContainer/Task Manager" method="_on_first_card_stored_task_container"]
+[connection signal="mouse_entered" from="CronoTareas/MarginContainer/VBoxContainer/Task Manager/VBoxContainer/FinishedTaskContainer" to="CronoTareas/MarginContainer/VBoxContainer/Task Manager/VBoxContainer/FinishedTaskContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CronoTareas/MarginContainer/VBoxContainer/Task Manager/VBoxContainer/FinishedTaskContainer" to="CronoTareas/MarginContainer/VBoxContainer/Task Manager/VBoxContainer/FinishedTaskContainer" method="_on_mouse_exited"]
+[connection signal="on_emptied_list" from="CronoTareas/MarginContainer/VBoxContainer/Task Manager/VBoxContainer/FinishedTaskContainer" to="CronoTareas/MarginContainer/VBoxContainer/Task Manager/VBoxContainer" method="_on_finished_container_emptied_list"]
+[connection signal="on_first_card_stored" from="CronoTareas/MarginContainer/VBoxContainer/Task Manager/VBoxContainer/FinishedTaskContainer" to="CronoTareas/MarginContainer/VBoxContainer/Task Manager/VBoxContainer" method="_on_finished_container_first_card_stored"]
+[connection signal="add_task" from="Edit task menu" to="CronoTareas/MarginContainer/VBoxContainer/Task Manager" method="_add_card"]
+[connection signal="add_task" from="Edit task menu" to="CronoTareas/MarginContainer/VBoxContainer/Task Manager/VBoxContainer/TaskContainer" method="_add_card"]
+[connection signal="change_theme" from="Main menu" to="." method="_on_change_theme"]

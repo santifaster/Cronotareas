@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://hb4bsaourq7"
+
+[deps]
+
+files=["res://translation_cronotareas.es_ES.translation", "res://translation_cronotareas.en.translation"]
+
+source_file="res://translation_cronotareas.csv"
+dest_files=["res://translation_cronotareas.es_ES.translation", "res://translation_cronotareas.en.translation"]
+
+[params]
+
+compress=true
+delimiter=0
