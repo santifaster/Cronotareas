@@ -164,10 +164,9 @@ layout_mode = 2
 size_flags_vertical = 0
 script = ExtResource("7_4mnvg")
 
-[node name="Completed Label" type="Label" parent="CronoTareas/MarginContainer/VBoxContainer/Task Manager/VBoxContainer"]
+[node name="Completed Tasks Label" type="Label" parent="CronoTareas/MarginContainer/VBoxContainer/Task Manager/VBoxContainer"]
 layout_mode = 2
-text = "Tareas Completadas
-"
+text = "tareas_completadas"
 language = "es_ES"
 
 [node name="FinishedTaskContainer" type="VBoxContainer" parent="CronoTareas/MarginContainer/VBoxContainer/Task Manager/VBoxContainer"]

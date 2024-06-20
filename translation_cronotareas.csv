@@ -1,6 +1,5 @@
 key,es_ES,en_En
 Tareas Pendientes,Tareas Pendientes,Pending Tasks
-Tareas Completadas,Tareas Completadas,Completed Tasks
 Escribe tu tarea,Escribe tu tarea,Write your task
 Atrás,Atrás,Back
 Crear,Crear,Create
@@ -12,3 +11,4 @@ Comenzar,Comenzar,Start
 Editar,Editar,Edit
 Reiniciar,Reiniciar,Restart
 Eliminar,Eliminar,Delete
+tareas_completadas,Tareas Completadas,Completed Tasks

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Cronotareas"
-config/version="0.1"
+config/version="0.1.1"
 run/main_scene="res://scenes/interface.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://sprites/logo_cronotareas.png"
