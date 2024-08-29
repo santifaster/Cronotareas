@@ -1,7 +1,7 @@
 key,es_ES,en_En
 Tareas Pendientes,Tareas Pendientes,Pending Tasks
 Escribe tu tarea,Escribe tu tarea,Write your task
-Atrás,Atrás,Back
+Atras,Atrás,Back
 Crear,Crear,Create
 Cambiar tema,Cambiar tema,Change theme
 Idioma,Idioma,Language
@@ -12,3 +12,6 @@ Editar,Editar,Edit
 Reiniciar,Reiniciar,Restart
 Eliminar,Eliminar,Delete
 tareas_completadas,Tareas Completadas,Completed Tasks
+Duracion,Duración,Duration
+Tiempo Restante,Tiempo Restante,Time Left
+Borrar guardados y salir,Borrar guardados y salir,Erase saves and exit

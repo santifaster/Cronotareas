@@ -38,9 +38,8 @@ var time_left_seconds :
 		time_left += value - time_left_seconds
 
 #endregion
-
 	
-func _init(n_icon, n_title, n_duration):	
+func _init(n_icon = "❌", n_title = "non_defined_task", n_duration = 0):	
 	title = n_title
 	icon = n_icon
 	duration = n_duration
@@ -62,6 +61,16 @@ func _finish():
 func reset_task():
 	time_left = duration
 	state = state_type.not_started
+	
+func get_save_data():
+	var save_dict : Dictionary = {
+		"title" = title,
+		"icon" = icon,
+		"duration" = duration,
+		"time_left" = time_left,
+		"state" = state
+	}
+	return save_dict
 
 #region Get time
 func _get_string_duration():
@@ -81,7 +90,6 @@ func _get_string_time_left_minutes():
 	
 func _get_string_time_left_seconds():
 	return get_string_time(time_left_seconds)
-#endregion
 	
 func get_string_time(value:int):
 	var text = str(value)
@@ -89,3 +97,5 @@ func get_string_time(value:int):
 		text = "0" + text
 			
 	return text
+#endregion
+	

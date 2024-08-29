@@ -1,0 +1,65 @@
+[gd_resource type="Theme" load_steps=16 format=3 uid="uid://d2wkkamjlb0s0"]
+
+[ext_resource type="StyleBox" uid="uid://dmaedj38555gs" path="res://themes/styles/default_theme/button/button_focus_style.tres" id="1_8uyvf"]
+[ext_resource type="StyleBox" uid="uid://cirvq0u2lnvb1" path="res://themes/styles/default_theme/button/button_hover_style.tres" id="1_urboq"]
+[ext_resource type="StyleBox" uid="uid://dn5xrw72vjdwn" path="res://themes/styles/default_theme/separator/default_round_separator_flat.tres" id="2_6nvdl"]
+[ext_resource type="StyleBox" uid="uid://bjfjdcotbn7kr" path="res://themes/styles/default_theme/panel/panel_card_style.tres" id="2_7nqgj"]
+[ext_resource type="StyleBox" uid="uid://bx87hed338cff" path="res://themes/styles/default_theme/button/button_style.tres" id="2_qjqcw"]
+[ext_resource type="StyleBox" uid="uid://lj0j4fdpy1v1" path="res://themes/styles/default_theme/button/button_pressed_style.tres" id="4_evh4f"]
+[ext_resource type="StyleBox" uid="uid://c6klm2r10mjyv" path="res://themes/styles/default_theme/panel/panel_style.tres" id="4_f0qel"]
+[ext_resource type="StyleBox" uid="uid://8ckelccd8ta1" path="res://themes/styles/default_theme/button/round_button_hover_style.tres" id="6_f2n8x"]
+[ext_resource type="StyleBox" uid="uid://db0yq2beq8l8f" path="res://themes/styles/default_theme/button/round_button_style.tres" id="7_8skn1"]
+[ext_resource type="StyleBox" uid="uid://c7uymh4xx5pf6" path="res://themes/styles/default_theme/text_edit_style.tres" id="7_vnto5"]
+[ext_resource type="StyleBox" uid="uid://xp6rjyjejmcx" path="res://themes/styles/default_theme/button/round_button_focus_style.tres" id="9_07y7t"]
+[ext_resource type="StyleBox" uid="uid://c4u0ms6cn0a88" path="res://themes/styles/default_theme/bar_background_style.tres" id="9_s44o8"]
+[ext_resource type="StyleBox" uid="uid://dkukk0i6htqlr" path="res://themes/styles/default_theme/bar_style.tres" id="10_87gpf"]
+[ext_resource type="StyleBox" uid="uid://dpsp6fve4envq" path="res://themes/styles/default_theme/panel/translucent_panel_style.tres" id="14_sdoss"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0fvlt"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.0703441, 0.0703441, 0.0703441, 1)
+corner_radius_top_left = 200
+corner_radius_top_right = 200
+corner_radius_bottom_right = 200
+corner_radius_bottom_left = 200
+corner_detail = 16
+
+[resource]
+Button/styles/focus = ExtResource("1_8uyvf")
+Button/styles/hover = ExtResource("1_urboq")
+Button/styles/normal = ExtResource("2_qjqcw")
+Button/styles/pressed = ExtResource("4_evh4f")
+CardLabel/base_type = &"Label"
+CardLabel/colors/font_color = Color(1, 1, 1, 1)
+CardLabel/constants/line_spacing = 3
+CardLabel/font_sizes/font_size = 32
+CardPanel/base_type = &"Panel"
+CardPanel/styles/panel = ExtResource("2_7nqgj")
+HSeparator/styles/separator = ExtResource("2_6nvdl")
+LineEdit/constants/minimum_character_width = 1
+LineEdit/styles/focus = ExtResource("1_8uyvf")
+LineEdit/styles/normal = ExtResource("7_vnto5")
+MainMenuButton/base_type = &"Button"
+MainMenuButton/font_sizes/font_size = 24
+MarginContainer/constants/margin_bottom = 16
+MarginContainer/constants/margin_left = 16
+MarginContainer/constants/margin_right = 16
+MarginContainer/constants/margin_top = 16
+Panel/styles/panel = ExtResource("4_f0qel")
+ProgressBar/styles/background = ExtResource("9_s44o8")
+ProgressBar/styles/fill = ExtResource("10_87gpf")
+RoundedButton/base_type = &"Button"
+RoundedButton/styles/focus = ExtResource("9_07y7t")
+RoundedButton/styles/hover = ExtResource("6_f2n8x")
+RoundedButton/styles/normal = ExtResource("7_8skn1")
+RoundedButton/styles/pressed = SubResource("StyleBoxFlat_0fvlt")
+TextEdit/styles/focus = ExtResource("1_8uyvf")
+TextEdit/styles/normal = ExtResource("7_vnto5")
+TextureProgressBar/colors/tint_over = Color(1, 1, 1, 1)
+TextureProgressBar/colors/tint_progress = Color(0.6, 0.333333, 1, 1)
+TextureProgressBar/colors/tint_under = Color(0.266667, 0.266667, 0.266667, 1)
+TranslucentPanel/base_type = &"Panel"
+TranslucentPanel/styles/panel = ExtResource("14_sdoss")

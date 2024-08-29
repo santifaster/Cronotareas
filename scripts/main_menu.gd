@@ -1,37 +1,39 @@
 extends Node
 
+signal on_main_menu_open()
+signal on_main_menu_close()
 signal change_theme
+signal change_language
 signal delete_all_tasks
-
-var language_list
-var language_index : int
-
-func _ready():
-	language_list = TranslationServer.get_loaded_locales()
-	language_index = language_list.find(TranslationServer.get_locale())
+signal delete_all_saves
 	
-
 func _on_menu_button_pressed():
 	self.visible = true
+	on_main_menu_open.emit()
 
 
 func _on_close_menu_button_pressed():
 	self.visible = false
+	on_main_menu_close.emit()
 
 
 func _on_language_button_pressed():
-	language_index += 1
-	if language_index > language_list.size() - 1:
-		language_index = 0
-	TranslationServer.set_locale(language_list[language_index])
-	
-	print(language_list[language_index])
+	change_language.emit()
 
 
 func _on_themes_button_pressed():
 	change_theme.emit()
 	
-
+#TODO Make lock in window to prevent missclick
 func _on_delete_tasks_button_pressed():
 	delete_all_tasks.emit()
-	self.visible = false
+	_on_close_menu_button_pressed()
+	
+func _on_delete_saves_and_exit():
+	delete_all_saves.emit()
+	get_tree().quit()
+
+func _notification(what):
+
+	if self.visible and what == NOTIFICATION_WM_GO_BACK_REQUEST:
+		_on_close_menu_button_pressed()

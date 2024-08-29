@@ -13,8 +13,13 @@ config_version=5
 config/name="Cronotareas"
 config/version="0.1.1"
 run/main_scene="res://scenes/interface.tscn"
+config/quit_on_go_back=false
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://sprites/logo_cronotareas.png"
+
+[autoload]
+
+DataSave="*res://scripts/data_save.gd"
 
 [display]
 

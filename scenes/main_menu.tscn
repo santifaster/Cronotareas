@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://cg55gyrkwdadk" path="res://sprites/exit.png" id="2_ecfgt"]
 
 [node name="Main menu" type="Control"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,6 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_type_variation = &"TranslucentPanel"
 
 [node name="Close Menu Button" type="Button" parent="."]
 layout_mode = 1
@@ -93,14 +93,14 @@ text = "Eliminar tareas"
 language = "es_ES"
 
 [node name="Exit button" type="Button" parent="VBoxContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme_type_variation = &"MainMenuButton"
-text = "Salir"
+text = "Borrar guardados y salir"
 language = "es_ES"
 
 [connection signal="pressed" from="Close Menu Button" to="." method="_on_close_menu_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Themes button" to="." method="_on_themes_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Language button" to="." method="_on_language_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Delete tasks button" to="." method="_on_delete_tasks_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit button" to="." method="_on_delete_saves_and_exit"]

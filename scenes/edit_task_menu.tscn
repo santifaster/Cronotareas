@@ -18,6 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_type_variation = &"TranslucentPanel"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(320, 64)
@@ -49,7 +50,7 @@ layout_mode = 2
 [node name="Minutes Duration LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/TimeHBoxContainer"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
-placeholder_text = "00"
+placeholder_text = "m"
 alignment = 1
 max_length = 2
 virtual_keyboard_type = 2
@@ -62,7 +63,7 @@ horizontal_alignment = 1
 [node name="Seconds Duration LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/TimeHBoxContainer"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
-placeholder_text = "00"
+placeholder_text = "s"
 alignment = 1
 max_length = 2
 virtual_keyboard_type = 2
@@ -77,7 +78,7 @@ show_percentage = false
 [node name="Minutes Left LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/TimeHBoxContainer"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
-placeholder_text = "00"
+placeholder_text = "m"
 alignment = 1
 max_length = 2
 virtual_keyboard_type = 2
@@ -90,7 +91,7 @@ horizontal_alignment = 1
 [node name="Seconds Left LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/TimeHBoxContainer"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
-placeholder_text = "00"
+placeholder_text = "s"
 alignment = 1
 max_length = 2
 virtual_keyboard_type = 2
@@ -130,12 +131,31 @@ alignment = 1
 
 [node name="Back Button" type="Button" parent="HBoxContainer"]
 layout_mode = 2
-text = "Atrás"
+text = "Atras"
 language = "es_ES"
 
 [node name="Confirm Button" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 text = "Crear"
+language = "es_ES"
+
+[node name="Duration Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 224.0
+offset_right = 192.0
+offset_bottom = 247.0
+text = "Duracion"
+language = "es_ES"
+
+[node name="Time left Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 224.0
+offset_right = 348.0
+offset_bottom = 247.0
+text = "Tiempo Restante"
+horizontal_alignment = 2
 language = "es_ES"
 
 [connection signal="focus_exited" from="MarginContainer/VBoxContainer/TimeHBoxContainer/Minutes Duration LineEdit" to="." method="_on_time_set"]

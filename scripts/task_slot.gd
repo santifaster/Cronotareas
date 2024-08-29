@@ -34,6 +34,8 @@ func _ready():
 	if(task_data == null):
 		set_task(Task.new("T","Test card",10.0))
 		
+	add_to_group("save_nodes")
+		
 func _process(_delta):
 	if(task_data.state == Task.state_type.in_progress):
 		update_ui_time()
@@ -41,7 +43,10 @@ func _process(_delta):
 func set_task(n_task_data):
 	task_data = n_task_data
 	update_task_ui()
-	
+
+func save():
+	return task_data.get_save_data()	
+
 func update_task_ui():
 	title_label.text = task_data.title
 	icon_label.text = task_data.icon
@@ -62,7 +67,10 @@ func _enter_tree():
 	if(task_data == null):
 		return
 	
-	if(task_data.state == Task.state_type.completed):
+	#Updated UI time on parent change to set time to 0
+	#On save load tasks can be added compleated, while nodes aren't loaded
+	#To prevent this, compare to any variable that shouldn't be null
+	if(task_data.state == Task.state_type.completed and icon_label != null):
 		update_ui_time()
 	
 func _get_drag_data(_position):
