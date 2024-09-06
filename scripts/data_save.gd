@@ -65,6 +65,7 @@ func save_options(options:Options):
 	
 	config.set_value("Options", "language", options.language)
 	config.set_value("Options", "theme", options.theme)
+	config.set_value("Audio", "sfx_db", AudioManager.get_sfx_db())
 	
 	config.save(config_dir)
 	
@@ -77,8 +78,9 @@ func load_options():
 		print("Couldn't find options data")
 		return null
 	
-	loaded_options.language = config.get_value("Options","language")
-	loaded_options.theme = config.get_value("Options","theme")
+	loaded_options.language = config.get_value("Options","language","en")
+	loaded_options.theme = config.get_value("Options","theme","default")
+	loaded_options.sfx_db = config.get_value("Audio","sfx_db",0.)
 	return loaded_options
 
 func delete_tasks_save():

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=17 format=3 uid="uid://xhf1ksbncxyp"]
+[gd_resource type="Theme" load_steps=22 format=3 uid="uid://xhf1ksbncxyp"]
 
 [ext_resource type="StyleBox" uid="uid://bhqb6khlxxq65" path="res://themes/styles/desert_theme/button/button_disabled_style_desert.tres" id="1_iq14p"]
 [ext_resource type="StyleBox" uid="uid://bk4x0je15xg5e" path="res://themes/styles/desert_theme/button/button_focus_style_desert.tres" id="2_8j22x"]
@@ -8,12 +8,17 @@
 [ext_resource type="StyleBox" uid="uid://xedb1aa5g27" path="res://themes/styles/desert_theme/panel/panel_card_style_desert.tres" id="6_msq7v"]
 [ext_resource type="StyleBox" uid="uid://b3chwpt3u4j88" path="res://themes/styles/desert_theme/round_separator_style_desert.tres" id="7_0c8wl"]
 [ext_resource type="StyleBox" uid="uid://cvsfovjhu1unr" path="res://themes/styles/desert_theme/text_edit_style_desert.tres" id="8_3iuom"]
+[ext_resource type="Texture2D" uid="uid://cxr2i6pp5jr07" path="res://sprites/theme_sprites/slider_grabber_desert.svg" id="8_x0fip"]
 [ext_resource type="StyleBox" uid="uid://dp5xpa2ygv514" path="res://themes/styles/desert_theme/panel/panel_style_desert.tres" id="9_gxpu8"]
+[ext_resource type="Texture2D" uid="uid://cb6tbjmv3jkvr" path="res://sprites/theme_sprites/slider_grabber_hl_desert.svg" id="9_pelmf"]
+[ext_resource type="StyleBox" uid="uid://bfr43itw13y0a" path="res://themes/styles/desert_theme/slider_fill_style_desert.tres" id="10_prtff"]
 [ext_resource type="StyleBox" uid="uid://b26ndl2nmd5el" path="res://themes/styles/desert_theme/bar_background_style_desert.tres" id="10_so5kd"]
 [ext_resource type="StyleBox" uid="uid://b41402fqin25d" path="res://themes/styles/desert_theme/bar_style_desert.tres" id="11_0t4br"]
+[ext_resource type="StyleBox" uid="uid://dvrqcavirii3c" path="res://themes/styles/desert_theme/slider_bg_style_desert.tres" id="12_hmod6"]
 [ext_resource type="StyleBox" uid="uid://cdgbu4bnv06qb" path="res://themes/styles/desert_theme/button/round_button_focus_style_desert.tres" id="12_ui0f2"]
 [ext_resource type="StyleBox" uid="uid://dcii32eiphq1g" path="res://themes/styles/desert_theme/button/round_button_hover_style_desert.tres" id="13_elmkm"]
 [ext_resource type="StyleBox" uid="uid://cwm1o1dsawhom" path="res://themes/styles/desert_theme/button/round_button_style_desert.tres" id="14_7lraq"]
+[ext_resource type="StyleBox" uid="uid://dh6r0jnfucxtr" path="res://themes/styles/desert_theme/panel/menu_panel_container_style_desert.tres" id="14_ocwvo"]
 [ext_resource type="StyleBox" uid="uid://chsx6kywr5vtx" path="res://themes/styles/desert_theme/button/round_button_pressed_style_desert.tres" id="15_3m2rx"]
 [ext_resource type="StyleBox" uid="uid://crqqrx4x205sf" path="res://themes/styles/desert_theme/panel/translucent_panel_style_desert.tres" id="16_m8o60"]
 
@@ -42,6 +47,11 @@ CardLabel/font_sizes/font_size = 32
 CardPanel/base_type = &"Panel"
 CardPanel/styles/panel = ExtResource("6_msq7v")
 HSeparator/styles/separator = ExtResource("7_0c8wl")
+HSlider/icons/grabber = ExtResource("8_x0fip")
+HSlider/icons/grabber_highlight = ExtResource("9_pelmf")
+HSlider/styles/grabber_area = ExtResource("10_prtff")
+HSlider/styles/grabber_area_highlight = ExtResource("11_0t4br")
+HSlider/styles/slider = ExtResource("12_hmod6")
 Label/colors/font_color = Color(0.996078, 0.980392, 0.878431, 1)
 LineEdit/colors/font_color = Color(0.996078, 0.980392, 0.878431, 1)
 LineEdit/colors/font_placeholder_color = Color(0.996078, 0.980392, 0.878431, 0.6)
@@ -50,10 +60,14 @@ LineEdit/styles/focus = ExtResource("2_8j22x")
 LineEdit/styles/normal = ExtResource("8_3iuom")
 MainMenuButton/base_type = &"Button"
 MainMenuButton/font_sizes/font_size = 24
+MainMenuLabel/base_type = &"Label"
+MainMenuLabel/font_sizes/font_size = 24
 MarginContainer/constants/margin_bottom = 16
 MarginContainer/constants/margin_left = 16
 MarginContainer/constants/margin_right = 16
 MarginContainer/constants/margin_top = 16
+MenuPanelContainer/base_type = &"PanelContainer"
+MenuPanelContainer/styles/panel = ExtResource("14_ocwvo")
 Panel/styles/panel = ExtResource("9_gxpu8")
 ProgressBar/styles/background = ExtResource("10_so5kd")
 ProgressBar/styles/fill = ExtResource("11_0t4br")

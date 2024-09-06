@@ -72,6 +72,7 @@ func _on_completed_card():
 	if(current_task_container.cards[0] != null):
 		finished_task_container._add_card(current_task_container.migrate_card(0))
 		set_task_on_timer()
+		AudioManager.play_audio("task_finish")
 	else:
 		push_error("Got on completed event without task on timer, this should not happen")
 

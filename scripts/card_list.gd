@@ -11,9 +11,6 @@ var drag_preview
 var drag_index
 var drag_position
 
-#TODO Modify this to just control local card lists, will have to add another
-#instance of this script to completed tasks, and recive signals from other script
-
 func _process(_delta):
 		
 	if (not is_dragging):
@@ -94,8 +91,6 @@ func _add_card(new_card):
 	new_card.on_drop.connect(_on_card_drop)
 	new_card.on_delete.connect(_on_card_deleted)
 	if (cards.size() == 1):
-		#Disable preview space slots
-		#TODO Check if on load save, it doesn't disorder tasks
 		on_first_card_stored.emit()
 
 func _on_mouse_entered():

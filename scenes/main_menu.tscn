@@ -26,10 +26,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -80.0
-offset_top = 16.0
-offset_right = -16.0
-offset_bottom = 48.0
+offset_left = -96.0
+offset_top = 32.0
+offset_right = -32.0
+offset_bottom = 64.0
 grow_horizontal = 0
 theme_type_variation = &"RoundedButton"
 icon = ExtResource("2_ecfgt")
@@ -71,6 +71,53 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 24
 
+[node name="Sound" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_type_variation = &"MenuPanelContainer"
+
+[node name="Sound Label" type="Label" parent="VBoxContainer/Sound"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"MainMenuLabel"
+text = "Sonido"
+horizontal_alignment = 1
+language = "es_ES"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/Sound"]
+visible = false
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="SFX Slider" type="HSlider" parent="VBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+max_value = 1.0
+step = 0.0
+
+[node name="Interface" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_type_variation = &"MenuPanelContainer"
+
+[node name="Interface Label" type="Label" parent="VBoxContainer/Interface"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"MainMenuLabel"
+text = "Interfaz"
+horizontal_alignment = 1
+language = "es_ES"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/Interface"]
+visible = false
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
 [node name="Themes button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -84,6 +131,26 @@ size_flags_horizontal = 4
 theme_type_variation = &"MainMenuButton"
 text = "Idioma"
 language = "es_ES"
+
+[node name="Saves" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_type_variation = &"MenuPanelContainer"
+
+[node name="Saves Label" type="Label" parent="VBoxContainer/Saves"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"MainMenuLabel"
+text = "Guardados"
+horizontal_alignment = 1
+language = "es_ES"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/Saves"]
+visible = false
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="Delete tasks button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -100,6 +167,7 @@ text = "Borrar guardados y salir"
 language = "es_ES"
 
 [connection signal="pressed" from="Close Menu Button" to="." method="_on_close_menu_button_pressed"]
+[connection signal="value_changed" from="VBoxContainer/SFX Slider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="pressed" from="VBoxContainer/Themes button" to="." method="_on_themes_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Language button" to="." method="_on_language_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Delete tasks button" to="." method="_on_delete_tasks_button_pressed"]

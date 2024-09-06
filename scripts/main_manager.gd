@@ -35,7 +35,6 @@ func _on_change_theme():
 		push_warning("No themes loaded on main manager")
 		return
 	
-	#TODO Work in a way to organize themes and theme names
 	var theme_index = theme_keys.find(options_data.theme)
 	theme_index += 1
 	if theme_index > themes.size() - 1:
@@ -67,6 +66,7 @@ func _on_delete_all_saves():
 func load_options():
 	theme = load(themes[options_data.theme])
 	TranslationServer.set_locale(options_data.language)
+	AudioManager.set_sfx_db(options_data.sfx_db)
 	pass
 	
 func update_non_theme_nodes():
@@ -77,7 +77,6 @@ func on_task_change():
 	DataSave.save_tasks()
 	
 #Save on close
-#TODO Check if it works on android, it should have notification back request covered
 func _notification(what):
 	
 	match (what):
@@ -101,7 +100,6 @@ func on_menu_open():
 		printerr("Tried to open multiple menus at the same time, this should not happen")
 		
 func on_menu_close():
-	#FIXME Reenabling quit on go back on go back causes to quit on the same back signal
 	if menu_opened:
 		menu_opened = false
 	else:

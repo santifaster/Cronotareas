@@ -7,9 +7,13 @@ signal change_language
 signal delete_all_tasks
 signal delete_all_saves
 	
+@onready var h_slider = $"VBoxContainer/SFX Slider"
+
 func _on_menu_button_pressed():
 	self.visible = true
 	on_main_menu_open.emit()
+	h_slider.value = AudioManager.get_sfx_value()
+	print(AudioManager.get_sfx_value())
 
 
 func _on_close_menu_button_pressed():
@@ -37,3 +41,7 @@ func _notification(what):
 
 	if self.visible and what == NOTIFICATION_WM_GO_BACK_REQUEST:
 		_on_close_menu_button_pressed()
+
+func _on_sfx_slider_value_changed(value):
+	print(linear_to_db(value))
+	AudioManager._on_sfx_slider_value_changed(value)
