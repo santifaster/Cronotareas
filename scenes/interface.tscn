@@ -174,13 +174,19 @@ size_flags_vertical = 0
 script = ExtResource("7_4mnvg")
 
 [node name="Edit task menu" parent="." instance=ExtResource("6_uh4bl")]
-visible = false
 layout_mode = 1
+offset_left = -385.0
+offset_right = -385.0
 
 [node name="Main menu" parent="." instance=ExtResource("11_dt8km")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 2.0
+offset_left = 0.0
+offset_right = 0.0
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="CronoTareas/MarginContainer/TaskManager/TopButtonsMargin/HSplitContainer/New Task Button" to="Edit task menu" method="_on_new_task_button_pressed"]
 [connection signal="pressed" from="CronoTareas/MarginContainer/TaskManager/TopButtonsMargin/HSplitContainer/Menu Button" to="Main menu" method="_on_menu_button_pressed"]

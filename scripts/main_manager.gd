@@ -17,6 +17,7 @@ var language_index : int
 var menu_opened := false
 
 func _ready():
+	get_window().min_size = Vector2(384,768)
 	options_data = DataSave.load_options()
 	if options_data == null:
 		options_data = Options.new()

@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfd12mpey6vet"]
+[gd_scene load_steps=4 format=3 uid="uid://cfd12mpey6vet"]
 
 [ext_resource type="Script" path="res://scripts/edit_task.gd" id="1_ny1xq"]
+[ext_resource type="Script" path="res://scripts/tween_animator.gd" id="2_sfwix"]
+
+[sub_resource type="Curve" id="Curve_00wtv"]
+_data = [Vector2(0, 0), 0.0, 1.63033, 0, 0, Vector2(1, 1), -0.376472, 0.0, 0, 0]
+point_count = 2
 
 [node name="Edit task menu" type="Control"]
 layout_mode = 3
@@ -140,23 +145,40 @@ text = "Crear"
 language = "es_ES"
 
 [node name="Duration Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 32.0
-offset_top = 224.0
-offset_right = 192.0
-offset_bottom = 247.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -160.0
+offset_bottom = -137.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Duracion"
 language = "es_ES"
 
 [node name="Time left Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 192.0
-offset_top = 224.0
-offset_right = 348.0
-offset_bottom = 247.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -160.0
+offset_right = 156.0
+offset_bottom = -137.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Tiempo Restante"
 horizontal_alignment = 2
 language = "es_ES"
+
+[node name="Menu Tween Animator" type="Node" parent="." node_paths=PackedStringArray("anim_node")]
+script = ExtResource("2_sfwix")
+anim_curve = SubResource("Curve_00wtv")
+anim_node = NodePath("..")
 
 [connection signal="focus_exited" from="MarginContainer/VBoxContainer/TimeHBoxContainer/Minutes Duration LineEdit" to="." method="_on_time_set"]
 [connection signal="text_changed" from="MarginContainer/VBoxContainer/TimeHBoxContainer/Minutes Duration LineEdit" to="." method="_on_minutes_duration_changed"]

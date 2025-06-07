@@ -6,13 +6,13 @@
 
 [node name="Task Slot" type="CenterContainer"]
 offset_right = 320.0
-offset_bottom = 107.0
+offset_bottom = 99.0
 script = ExtResource("1_vd7ur")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-custom_minimum_size = Vector2(320, 64)
+custom_minimum_size = Vector2(320, 96)
 layout_mode = 2
-theme_override_constants/margin_left = 0
+theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
@@ -135,6 +135,8 @@ visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("3_yuaxb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TextHBoxContainer/Dropdown Button" to="." method="_on_dropdown_button_pressed"]

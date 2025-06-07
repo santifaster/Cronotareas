@@ -14,7 +14,7 @@ config/name="Cronotareas"
 config/version="0.2.1"
 run/main_scene="res://scenes/interface.tscn"
 config/quit_on_go_back=false
-config/features=PackedStringArray("4.2", "Mobile")
+config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://sprites/logo_cronotareas.png"
 
 [audio]
@@ -42,6 +42,7 @@ enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg")
 [file_customization]
 
 folder_colors={
+"res://animations/": "red",
 "res://scenes/": "teal",
 "res://scripts/": "blue",
 "res://sound/": "pink",

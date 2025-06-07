@@ -1,13 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://cc7br6a5feqjy"]
+[gd_scene load_steps=5 format=3 uid="uid://cc7br6a5feqjy"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_slcc5"]
 [ext_resource type="Texture2D" uid="uid://cg55gyrkwdadk" path="res://sprites/exit.png" id="2_ecfgt"]
+[ext_resource type="Script" path="res://scripts/tween_animator.gd" id="3_2m7ed"]
+
+[sub_resource type="Curve" id="Curve_eisqs"]
+_data = [Vector2(0, 0), 0.0, 1.63033, 0, 0, Vector2(1, 1), -0.376472, 0.0, 0, 0]
+point_count = 2
 
 [node name="Main menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 384.0
+offset_right = 384.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_slcc5")
@@ -118,6 +125,11 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
+[node name="Always top check" type="CheckButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Siempre encima"
+
 [node name="Themes button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -166,8 +178,14 @@ theme_type_variation = &"MainMenuButton"
 text = "Borrar guardados y salir"
 language = "es_ES"
 
+[node name="Menu Tween Animator" type="Node" parent="." node_paths=PackedStringArray("anim_node")]
+script = ExtResource("3_2m7ed")
+anim_curve = SubResource("Curve_eisqs")
+anim_node = NodePath("..")
+
 [connection signal="pressed" from="Close Menu Button" to="." method="_on_close_menu_button_pressed"]
 [connection signal="value_changed" from="VBoxContainer/SFX Slider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="toggled" from="VBoxContainer/Always top check" to="." method="_on_always_top_check_toggled"]
 [connection signal="pressed" from="VBoxContainer/Themes button" to="." method="_on_themes_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Language button" to="." method="_on_language_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Delete tasks button" to="." method="_on_delete_tasks_button_pressed"]

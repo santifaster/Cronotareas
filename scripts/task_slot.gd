@@ -155,5 +155,3 @@ func _on_reset_button_pressed():
 
 func _on_eliminate_button_pressed():
 	delete()
-
-

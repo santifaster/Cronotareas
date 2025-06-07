@@ -22,12 +22,18 @@ const TASK_SLOT = preload("res://scenes/task_slot.tscn")
 
 @onready var confirm_button = $"HBoxContainer/Confirm Button"
 
-var is_task_new
+@onready var menu_tween_animator: Node = $"Menu Tween Animator"
+
+var edit_menu_open : bool
+
+var is_task_new : bool
 var task_slot_script
-var task_data
+var task_data : Task
 
 func _ready():
 	DataSave.task_loaded.connect(create_task)
+	get_viewport().size_changed.connect(window_resize)
+	window_resize()
 	pass
 
 func on_task_edit(edit_task_data, edit_task_slot_script):
@@ -40,7 +46,7 @@ func on_task_edit(edit_task_data, edit_task_slot_script):
 	update_ui_time()
 	#check_valid_time()
 	confirm_button.text = tr("Editar")
-	visible = true
+	menu_open(true)
 	on_edit_menu_open.emit()
 	
 func _on_new_task_button_pressed():
@@ -48,7 +54,7 @@ func _on_new_task_button_pressed():
 	task_data =  Task.new("","", 0)
 	check_valid_time()
 	confirm_button.text = tr("Crear")
-	visible = true
+	menu_open(true)
 	on_edit_menu_open.emit()
 	
 		
@@ -106,7 +112,7 @@ func check_valid_time():
 		confirm_button.disabled = false
 
 func clear_ui_and_exit():
-	visible = false
+	menu_open(false)
 	
 	task_data = null
 	task_slot_script = null
@@ -148,7 +154,7 @@ func create_task(new_task_data = task_data):
 	task_instance.update_task_ui()
 	
 	#If not visible the edit menu it's being added by save loading 
-	if self.visible:
+	if edit_menu_open:
 		on_task_added.emit()
 
 func edit_task():
@@ -239,8 +245,22 @@ func _on_time_set():
 	
 #endregion
 
+func menu_open(open:bool):
+	edit_menu_open = open
+	if edit_menu_open:
+		self.visible = true
+		menu_tween_animator.tween_animation(Vector2(0,0))
+	else:
+		menu_tween_animator.tween_animation(Vector2(-get_window().size.x,0))
+	
+
 func _notification(what):
 
-	if self.visible and what == NOTIFICATION_WM_GO_BACK_REQUEST:
+	if edit_menu_open and what == NOTIFICATION_WM_GO_BACK_REQUEST:
 		_on_back_button_pressed()
 
+func window_resize():
+	if edit_menu_open:
+		self.position = Vector2(0,0)
+	else: 
+		self.position = Vector2(-get_window().size.x,0)
